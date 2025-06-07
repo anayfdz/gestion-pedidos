@@ -7,13 +7,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
-@Table("client")
+@Table("clients")
 public class Client {
     @Id
     private Long id;
 
     @NotBlank
-    private String nombre;
+    private String name;
 
     @Email
     private String email;
