@@ -10,16 +10,16 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.math.BigDecimal;
 
 @Data
-@Table("product")
+@Table("products")
 public class Product {
     @Id
     private Long id;
 
     @NotBlank
-    private String nombre;
+    private String name;
 
     @NotNull
     @Positive
-    private BigDecimal precio;
+    private BigDecimal price;
     
 }
