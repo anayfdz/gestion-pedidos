@@ -69,6 +69,10 @@ public class OrderService {
             })
             .onErrorMap(ex -> new OrderException("Error creating order", ex));
     }
+    public Mono<Order> getOrderById(String id) {
+    return orderRepository.findById(id);
+}
+
     private BigDecimal calculateTotal(
         java.util.List<ItemOrderRequest> items,
         java.util.List<Product> products) {
