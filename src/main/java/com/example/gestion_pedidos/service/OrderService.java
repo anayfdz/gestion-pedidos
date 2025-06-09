@@ -58,13 +58,13 @@ public class OrderService {
                             .build();
 
                         return orderRepository.save(order)
-                            .doOnSuccess(savedOrder -> {
+                            .flatMap(savedOrder -> 
                                 outbox.registerEvent(new OutboxEvent(
                                     "ORDER_CREATED",
                                     savedOrder.getId(),
                                     savedOrder
-                                ));
-                            });
+                                )).thenReturn(savedOrder)
+                            );
                     });
             })
             .onErrorMap(ex -> new OrderException("Error creating order", ex));
