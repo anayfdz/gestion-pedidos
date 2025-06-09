@@ -1,0 +1,27 @@
+<div class="order-form-container">
+  <h2>Crear Orden</h2>
+  <form (ngSubmit)="submitOrder()">
+    <label>
+      Cliente ID:
+      <input type="number" [(ngModel)]="clientId" name="clientId" required />
+    </label>
+
+    <div *ngFor="let product of products; let i = index">
+      <label>
+        Producto ID:
+        <input type="number" [(ngModel)]="products[i].productId" name="productId{{i}}" required />
+      </label>
+
+      <label>
+        Cantidad:
+        <input type="number" [(ngModel)]="products[i].quantity" name="quantity{{i}}" min="1" required />
+      </label>
+
+      <button type="button" (click)="removeProduct(i)" *ngIf="products.length > 1">Eliminar</button>
+    </div>
+
+    <div style="margin-top: 10px;">
+      <button type="submit">Crear Orden</button>
+    </div>
+  </form>
+</div>
