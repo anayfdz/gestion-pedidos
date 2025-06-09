@@ -3,6 +3,7 @@ spring:
     url: r2dbc:postgresql://localhost:5432/ecommerce
     username: user
     password: pass
+    initialization-mode: always
 
   data:
     mongodb:
@@ -11,3 +12,9 @@ spring:
 logging:
   level:
     root: INFO
+    org.springframework.r2dbc: DEBUG
+    org.springframework.data.mongodb.core: DEBUG
+    org.springframework.web.reactive: DEBUG
+    io.r2dbc.postgresql.QUERY: DEBUG
+    org.springframework.data.r2dbc.core: DEBUG
+    reactor.netty: WARN
